@@ -3,7 +3,7 @@ FROM archlinux:latest
 RUN pacman -Syyu --noconfirm
 
 RUN pacman -S --needed --noconfirm \
-      base-devel curl git unzip zip cmake python
+      base-devel openssh curl git unzip zip cmake python
 # clean up
 RUN find /var/cache/pacman/ -type f -delete
 
