@@ -1,10 +1,9 @@
 FROM archlinux:latest
 
-RUN pacman -Syu --noconfirm
+RUN pacman -Syyu --noconfirm
+
 RUN pacman -S --needed --noconfirm \
-      base-devel curl git unzip zip cmake
-RUN pacman -S --needed --noconfirm \
-      python
+      base-devel curl git unzip zip cmake python
 # clean up
 RUN find /var/cache/pacman/ -type f -delete
 
