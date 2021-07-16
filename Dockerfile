@@ -1,6 +1,12 @@
 FROM archlinux:latest
 
-RUN sed -i 's/#\(.*aarnet.*\)/\1/g' /etc/pacman.d/mirrorlist
+ARG is_localbuild
+
+RUN if [[ -z "$is_localbuild" ]] ; then
+  echo "CI build" ;
+else
+  sed -i 's/#\(.*aarnet.*\)/\1/g' /etc/pacman.d/mirrorlist ;
+fi
 
 RUN pacman -Syyu --noconfirm
 
